@@ -4,7 +4,8 @@ echo "Media dir: $media_dir"
 SAVEIFS=$IFS
 IFS=$(echo -en "\n\b")
 
-# Create Thumbnails
+# Create thumbnails
+echo "Create thumbnails";
 for video_file in $(find "${media_dir}" -type f -iname "*.mov" -o -iname "*.avi" -o -iname "*.mkv");
 do
     echo "${video_file}";
@@ -17,6 +18,7 @@ do
 done;
 
 # Clean Up
+echo "Clen Up thumbnails";
 for thumbnail_file in $(find "${media_dir}" -type f -iname "*.mov.cover.jpg" -o -iname "*.avi.cover.jpg" -o -iname "*.mkv.cover.jpg");
 do
     echo "${thumbnail_file}";
@@ -25,7 +27,7 @@ do
     if ! [ -f "${video_file}" ]
     then
         echo "- remove ${thumbnail_file}";
-        rm "${video_file}";
+        rm "${thumbnail_file}";
     fi
 done;
 
